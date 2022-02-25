@@ -32,4 +32,28 @@ public class Atleta {
         InicioCarrera = date;
         return true;
     }
+
+    public boolean retirar(LocalDate date) {
+        if ((InicioCarrera == null) || (FinCarrera != null)) {
+            return false;
+        }
+        FinCarrera = date;
+        return true;
+    }
+
+    public boolean estaActivo() {
+        if ((Nacimiento != null) && ( InicioCarrera != null)) {
+            return true;
+
+        }
+        return false;
+    }
+
+    public int diasActivo() {
+        if ((Nacimiento != null) && ( InicioCarrera != null)) {
+            return Period.between(InicioCarrera, LocalDate.now()).getDays();
+        }
+        return 0 ;
+    }
+
 }
